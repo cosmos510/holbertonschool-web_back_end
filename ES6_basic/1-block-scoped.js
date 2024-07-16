@@ -1,3 +1,4 @@
+// add function taskBlock(trueOrFalse) that returns an array containing two functions
 export default function taskBlock(trueOrFalse) {
     const task = false;
     const task2 = true;
