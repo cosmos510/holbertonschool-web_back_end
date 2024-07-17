@@ -1,29 +1,13 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this._name = this._validateString(name, 'name');
-    this._length = this._validateNumber(length, 'length');
-    this._students = this._validateArrayOfStrings(students, 'students');
-  }
-
-  _validateString(value, attribute) {
-    if (typeof value !== 'string') {
-      throw new TypeError(`${attribute} must be a string`);
+    if (typeof name !== 'string') throw TypeError('name must be a string');
+    if (typeof length !== 'number') throw TypeError('length must be a number');
+    if (students.constructor !== Array && students.every((el) => typeof el === 'string')) {
+      throw TypeError('students must be an array of strings');
     }
-    return value;
-  }
-
-  _validateNumber(value, attribute) {
-    if (typeof value !== 'number') {
-      throw new TypeError(`${attribute} must be a number`);
-    }
-    return value;
-  }
-
-  _validateArrayOfStrings(value, attribute) {
-    if (!Array.isArray(value) || !value.every(item => typeof item === 'string')) {
-      throw new TypeError(`${attribute} must be an array of strings`);
-    }
-    return value;
+    this._name = name;
+    this._length = length;
+    this._students = students;
   }
 
   get name() {
@@ -38,15 +22,15 @@ export default class HolbertonCourse {
     return this._students;
   }
 
-  set name(value) {
-    this._name = this._validateString(value, 'name');
+  set name(newName) {
+    this._name = newName;
   }
 
-  set length(value) {
-    this._length = this._validateNumber(value, 'length');
+  set length(newLength) {
+    this._length = newLength;
   }
 
-  set students(value) {
-    this._students = this._validateArrayOfStrings(value, 'students');
+  set students(newStudents) {
+    this._students = newStudents;
   }
 }
